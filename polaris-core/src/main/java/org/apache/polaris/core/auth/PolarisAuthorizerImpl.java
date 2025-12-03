@@ -784,7 +784,7 @@ public class PolarisAuthorizerImpl implements PolarisAuthorizer {
       throw new ForbiddenException(
           "Principal '%s' is not authorized for op %s due to PRINCIPAL_CREDENTIAL_ROTATION_REQUIRED_STATE",
           polarisPrincipal.getName(), authzOp);
-    } else if (authzOp == PolarisAuthorizableOperation.RESET_CREDENTIALS) {
+    } else if (authzOp == PolarisAuthorizableOperation.RESET_CREDENTIALS || authzOp == PolarisAuthorizableOperation.ROTATE_CREDENTIALS) {
       if (!isRoot) {
         throw new ForbiddenException("Only Root principal(service-admin) can perform %s", authzOp);
       }
